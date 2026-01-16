@@ -606,6 +606,10 @@ footer {
         flex-wrap: row wrap;
     }
 
+    .member-photo {
+        height: 315px;
+    }
+
     .logo img {
         height: 30px;
     }
@@ -690,7 +694,7 @@ footer {
     }
 
     .view-profile {
-        padding: 5px 15px;
+        padding: 5px 70px;
         font-size: 0.7rem;
     }
 
