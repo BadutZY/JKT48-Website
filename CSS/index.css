@@ -1,0 +1,612 @@
+/* Global styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Helvetica', 'Arial', sans-serif;
+}
+
+body {
+  background-color: #f5f5f5;
+  color: #333;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: #333;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* Header styles */
+header {
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.header-top {
+  background-color: #cf0000;
+  padding: 10px 0;
+  text-align: right;
+}
+
+.header-top a {
+  color: white;
+  margin-left: 15px;
+  font-size: 12px;
+}
+
+.logo-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+}
+
+.logo img {
+  height: 60px;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+}
+
+nav ul li {
+  margin-left: 20px;
+  position: relative;
+}
+
+nav ul li a {
+  font-weight: bold;
+  padding: 10px 5px;
+  display: block;
+  transition: color 0.3s;
+}
+
+nav ul li a:hover {
+  color: #cf0000;
+}
+
+/* Hero section - Simple slide with peek effect (NO ZOOM) */
+.hero {
+  margin-bottom: 40px;
+  margin-top: 10px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.hero-slider-container {
+  width: 100%;
+  max-width: 100%; /* Changed from 1400px to 100% */
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  padding: 0;
+}
+
+.hero-slider {
+  display: flex;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+
+.hero-slide {
+  flex: 0 0 70%;
+  max-width: 70%;
+  padding: 0 15px;
+  position: relative;
+}
+
+.hero-slide.center {
+  opacity: 1;
+  z-index: 3;
+}
+
+.hero-slide img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display: block;
+  border-radius: 10px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+}
+
+.hero-slide.center img {
+  box-shadow: 0 15px 50px rgba(0,0,0,0.3);
+}
+
+@media (min-width: 1600px) {
+  .hero-slide {
+    flex: 0 0 60%;
+    max-width: 60%;
+    padding: 0 20px;
+  }
+}
+
+@media (min-width: 1920px) {
+  .hero-slide {
+    flex: 0 0 55%;
+    max-width: 55%;
+    padding: 0 25px;
+  }
+}
+
+/* Slider buttons */
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(207, 0, 0, 0.8);
+  color: white;
+  border: none;
+  padding: 0;
+  font-size: 20px;
+  cursor: pointer;
+  z-index: 100;
+  transition: all 0.3s;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.slider-btn:hover {
+  background-color: rgba(207, 0, 0, 1);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.prev-btn {
+  left: 30px;
+}
+
+.next-btn {
+  right: 30px;
+}
+
+.prev-btn::before {
+  content: '‹';
+}
+
+.next-btn::before {
+  content: '›';
+}
+
+/* Slider dots */
+.slider-dots {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 12px;
+  z-index: 100;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: all 0.3s;
+  border: 2px solid transparent;
+}
+
+.dot:hover {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.dot.active {
+  background-color: #cf0000;
+  border-color: white;
+  transform: scale(1.2);
+}
+
+/* News section */
+.section-title {
+  text-align: center;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.section-title h2 {
+  display: inline-block;
+  background-color: #fff;
+  padding: 0 20px;
+  position: relative;
+  z-index: 1;
+  color: #cf0000;
+}
+
+.section-title:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-color: #ddd;
+  z-index: 0;
+}
+
+/* Update untuk News Grid - Center ketika item sedikit */
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  margin-bottom: 40px;
+  justify-items: center;
+}
+
+/* Ketika ada 1-3 items, center mereka */
+.news-grid:has(.news-item:nth-child(1):last-child),
+.news-grid:has(.news-item:nth-child(2):last-child),
+.news-grid:has(.news-item:nth-child(3):last-child) {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+/* Set width untuk item ketika di-center */
+.news-grid:has(.news-item:nth-child(1):last-child) .news-item,
+.news-grid:has(.news-item:nth-child(2):last-child) .news-item,
+.news-grid:has(.news-item:nth-child(3):last-child) .news-item {
+  width: 250px;
+  max-width: 100%;
+}
+
+/* Ketika ada 4+ items, gunakan grid normal */
+.news-grid:has(.news-item:nth-child(4)) {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  justify-items: stretch;
+}
+
+.news-grid:has(.news-item:nth-child(4)) .news-item {
+  width: 100%;
+}
+
+/* Existing news-item styles tetap sama */
+.news-item {
+  background-color: #fff;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  transition: transform 0.3s;
+}
+
+.news-item:hover {
+  transform: translateY(-5px);
+}
+
+.news-image {
+  height: 180px;
+  background-size: cover;
+  background-position: center;
+}
+
+.news-content {
+  padding: 15px;
+}
+
+.news-date {
+  font-size: 12px;
+  color: #999;
+  margin-bottom: 5px;
+}
+
+.news-title {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+
+/* Mobile responsive untuk centered items */
+@media (max-width: 768px) {
+  .news-grid:has(.news-item:nth-child(1):last-child) .news-item,
+  .news-grid:has(.news-item:nth-child(2):last-child) .news-item,
+  .news-grid:has(.news-item:nth-child(3):last-child) .news-item {
+    width: 100%;
+    max-width: 350px;
+  }
+  
+  .news-grid {
+    gap: 15px;
+  }
+}
+
+.read-more {
+  color: #cf0000;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/* Birthday Members section */
+.birthday-section {
+  background-color: #fff;
+  padding: 40px 0;
+  margin-bottom: 40px;
+}
+
+.birthday-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.birthday-item {
+  display: flex;
+  gap: 15px;
+  align-items: flex-start;
+  padding: 15px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.birthday-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.birthday-photo {
+  width: 90px;
+  height: 127px;
+  border-radius: 8px;
+  background-size: cover;
+  background-position: center top;
+  flex-shrink: 0;
+  border: 2px solid #cf0000;
+}
+
+.birthday-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+}
+
+.birthday-name {
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.birthday-date {
+  font-size: 14px;
+  color: #666;
+}
+
+/* Footer */
+footer {
+  background-color: #222;
+  color: #fff;
+  padding: 40px 0 20px;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.footer-column h3 {
+  color: #cf0000;
+  margin-bottom: 15px;
+  font-size: 18px;
+}
+
+.footer-column ul {
+  margin-bottom: 0;
+  list-style: none;
+}
+
+.footer-column ul li {
+  margin-bottom: 10px;
+}
+
+.footer-column ul li a {
+  color: #ccc;
+  transition: color 0.3s;
+}
+
+.footer-column ul li a:hover {
+  color: #fff;
+}
+
+.social-icons {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.social-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s;
+}
+
+.social-icon svg{
+  color: #fff;
+}
+
+.social-icon svg:hover{
+  color: red;
+}
+
+.copyright {
+  text-align: center;
+  font-size: 12px;
+  color: #777;
+  padding-top: 20px;
+  border-top: 1px solid #333;
+}
+
+nav ul li a.active {
+  color: #cf0000;
+  border-bottom: 2px solid #cf0000;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.hamburger span {
+  width: 100%;
+  height: 3px;
+  background-color: #333;
+  transition: all 0.3s ease;
+}
+
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px,-7px);
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .logo-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    flex-wrap: row wrap;
+  }
+
+  .logo img {
+    height: 30px;
+  }
+  
+  nav ul {
+    margin-top: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .hamburger {
+    display: flex;
+    margin-left: auto;
+  }
+
+  nav {
+    display: none;
+    width: 100%;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    z-index: 1000;
+  }
+
+  nav.active {
+    display: block;
+  }
+
+  nav ul {
+    flex-direction: column;
+    padding: 10px 0;
+  }
+
+  nav ul li {
+    margin: 10px 0;
+    text-align: center;
+  }
+
+  nav ul li a {
+    padding: 10px 20px;
+  }
+
+  /* Hero slider mobile */
+  .hero-slide {
+    flex: 0 0 85%;
+    max-width: 85%;
+    padding: 0 8px;
+  }
+
+  .slider-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+  }
+
+  .prev-btn {
+    left: 10px;
+  }
+
+  .next-btn {
+    right: 10px;
+  }
+
+  .slider-dots {
+    bottom: 15px;
+    gap: 8px;
+  }
+
+  .dot {
+    width: 10px;
+    height: 10px;
+  }
+
+  /* Birthday grid mobile */
+  .birthday-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 0 15px;
+  }
+
+  .birthday-item {
+    gap: 20px;
+  }
+
+  .birthday-photo {
+    width: 90px;
+    height: 127px;
+  }
+
+  .birthday-name {
+    font-size: 16px;
+  }
+
+  .birthday-date {
+    font-size: 13px;
+  }
+}
