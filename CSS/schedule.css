@@ -485,6 +485,119 @@
       .member-card img {
         height: 150px;
       }
+
+      /* Modal adjustments for mobile */
+      .modal-content {
+          margin: 5% auto;
+          width: 95%;
+          max-width: 95%;
+          padding: 15px;
+          max-height: 90vh;
+          overflow-y: auto;
+      }
+
+      .modal-body {
+          grid-template-columns: 1fr;
+          gap: 15px;
+      }
+
+      .left-column {
+          display: flex;
+          flex-direction: column;
+      }
+
+      .modal-body img {
+          width: 100%;
+          max-width: 100%;
+          height: auto;
+          margin-bottom: 15px;
+      }
+
+      /* Member section becomes scrollable */
+      .modal-members {
+          max-height: none;
+          overflow-y: visible;
+          margin-top: 20px;
+          padding-top: 20px;
+          border-top: 1px solid #eee;
+      }
+
+      .modal-members h3 {
+          font-size: 18px;
+          margin-bottom: 15px;
+          position: sticky;
+          top: 0;
+          background-color: #fefefe;
+          padding: 10px 0;
+          z-index: 10;
+      }
+
+      /* 3 column grid for members on mobile */
+      .member-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 8px;
+      }
+
+      .member-card {
+          padding: 8px;
+          background-color: #f9f9f9;
+          border-radius: 5px;
+      }
+
+      .member-card img {
+          width: 100%;
+          height: 180px;
+          object-fit: cover;
+          border-radius: 5px;
+          margin-bottom: 5px;
+      }
+
+      .member-card p {
+          font-size: 12px;
+          text-align: center;
+          margin-top: 3px;
+          font-weight: 500;
+      }
+
+      /* Modal header adjustments */
+      .modal-header h2 {
+          font-size: 18px;
+      }
+
+      .modal-close {
+          font-size: 32px;
+          line-height: 1;
+      }
+
+      /* Modal details adjustments */
+      .modal-details {
+          margin-bottom: 15px;
+      }
+
+      .modal-details p {
+          font-size: 14px;
+          margin-bottom: 8px;
+      }
+
+      .modal-ticket-btn {
+          width: 100%;
+          text-align: center;
+          padding: 12px 20px;
+          font-size: 16px;
+      }
+
+      .modal-cta {
+          margin-top: 15px;
+      }
+
+      /* Ensure body doesn't scroll when modal is open */
+      body.modal-open {
+          overflow: hidden;
+          position: fixed;
+          width: 100%;
+          height: 100%;
+      }
     }
 
     @media (max-width: 768px) {
@@ -500,6 +613,28 @@
       }
     }
 
+    /* Additional adjustments for very small screens */
+    @media (max-width: 480px) {
+        .modal-content {
+            margin: 10% auto;
+            width: 98%;
+            padding: 12px;
+        }
+
+        .member-card img {
+            height: 130px;
+        }
+
+        .modal-header h2 {
+            font-size: 16px;
+        }
+
+        .member-card p {
+            font-size: 11px;
+        }
+    }
+
     body.modal-open {
       overflow: hidden;
     }
+  

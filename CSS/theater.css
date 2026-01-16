@@ -368,3 +368,9 @@
         padding: 8px;
       }
     }
+
+    @media (max-width: 360px) {
+      .theater-schedule table {
+        font-size: 12px;
+      }
+    }

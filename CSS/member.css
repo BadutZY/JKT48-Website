@@ -755,7 +755,7 @@ footer {
     }
 
     .member-photo {
-        height: 120px;
+        height: 140px;
     }
 
     .member-info {
@@ -768,7 +768,7 @@ footer {
     }
 
     .view-profile {
-        padding: 3px 10px;
+        padding: 3px 25px;
         font-size: 0.6rem;
     }
 
